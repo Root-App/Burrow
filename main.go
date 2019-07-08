@@ -22,14 +22,14 @@
 // have your own application structure to provide configuration and logging. To this end, Burrow can also be used as a
 // library within another app.
 //
-// When embedding Burrow, please refer to https://github.com/linkedin/Burrow/blob/master/main.go for details on what
+// When embedding Burrow, please refer to https://github.com/Root-App/Burrow/blob/master/main.go for details on what
 // preparation should happen before starting it. This is the wrapper that provides the CLI interface. The main logic
 // for Burrow is in the core package, while the protocol package provides some of the common interfaces that are used.
 //
 // Additional Documentation
 //
 // More documentation on Burrow, including configuration and HTTP requests, can be found at
-// https://github.com/linkedin/Burrow/wiki
+// https://github.com/Root-App/Burrow/wiki
 package main
 
 import (
@@ -44,7 +44,7 @@ import (
 
 	"github.com/spf13/viper"
 
-	"github.com/linkedin/Burrow/core"
+	"github.com/Root-App/Burrow/core"
 )
 
 // exitCode wraps a return value for the application

@@ -22,8 +22,8 @@ import (
 
 	"regexp"
 
-	"github.com/linkedin/Burrow/core/internal/helpers"
-	"github.com/linkedin/Burrow/core/protocol"
+	"github.com/Root-App/Burrow/core/internal/helpers"
+	"github.com/Root-App/Burrow/core/protocol"
 	"github.com/spf13/viper"
 )
 

@@ -1,5 +1,5 @@
 FROM iron/go
-LABEL maintainer="LinkedIn Burrow https://github.com/linkedin/Burrow"
+LABEL maintainer="LinkedIn Burrow https://github.com/Root-App/Burrow"
 
 WORKDIR /app
 ADD burrow /app/

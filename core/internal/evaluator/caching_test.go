@@ -19,8 +19,8 @@ import (
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
-	"github.com/linkedin/Burrow/core/internal/storage"
-	"github.com/linkedin/Burrow/core/protocol"
+	"github.com/Root-App/Burrow/core/internal/storage"
+	"github.com/Root-App/Burrow/core/protocol"
 )
 
 func fixtureModule() (*storage.Coordinator, *CachingEvaluator) {

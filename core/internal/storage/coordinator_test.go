@@ -17,7 +17,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"testing"
 
-	"github.com/linkedin/Burrow/core/protocol"
+	"github.com/Root-App/Burrow/core/protocol"
 	"time"
 )
 

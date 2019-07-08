@@ -18,7 +18,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"testing"
 
-	"github.com/linkedin/Burrow/core/internal/helpers"
+	"github.com/Root-App/Burrow/core/internal/helpers"
 	"sync"
 )
 
