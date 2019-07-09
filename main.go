@@ -89,8 +89,7 @@ func main() {
 	viper.SetDefault("general.env-var-prefix", "burrow")
 	envPrefix := viper.GetString("general.env-var-prefix")
 	viper.SetEnvPrefix(envPrefix)
-	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
-	viper.SetEnvKeyReplacer(strings.NewReplacer("-", "__HYPHEN__"))
+	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_", "-", "__HYPHEN__"))
 	viper.AutomaticEnv()
 
 	// Create the PID file to lock out other processes
