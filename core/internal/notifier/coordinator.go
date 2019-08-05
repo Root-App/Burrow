@@ -327,7 +327,7 @@ func (nc *Coordinator) manageEvalLoop() {
 			time.Sleep(100 * time.Millisecond)
 		}
 
-		err := lock.Unlock()
+		err = lock.Unlock()
 		if err != nil {
 			panic("Unable to release zookeeper lock after session expiration")
 		}
