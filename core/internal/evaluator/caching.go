@@ -170,7 +170,7 @@ func (module *CachingEvaluator) getConsumerStatus(request *protocol.EvaluatorReq
 
 func (module *CachingEvaluator) evaluateConsumerStatus(clusterAndConsumer string) (interface{}, error) {
 	// First off, we need to separate the cluster and consumer values from the string provided
-	parts := strings.Split(clusterAndConsumer, " ")
+	parts := strings.SplitN(clusterAndConsumer, " ", 2)
 	if len(parts) != 2 {
 		module.Log.Error("query with bad clusterAndConsumer", zap.String("arg", clusterAndConsumer))
 		return nil, &cacheError{StatusCode: 500, Reason: "bad request"}
@@ -341,7 +341,7 @@ func calculatePartitionStatus(offsets []*protocol.ConsumerOffset, brokerOffsets 
 // Rule 1 - If over the stored period, the lag is ever zero for the partition, the period is OK
 func isLagAlwaysNotZero(offsets []*protocol.ConsumerOffset) bool {
 	for _, offset := range offsets {
-		if offset.Lag == 0 {
+		if offset.Lag != nil && offset.Lag.Value == 0 {
 			return false
 		}
 	}
@@ -379,9 +379,14 @@ func checkIfOffsetsStalled(offsets []*protocol.ConsumerOffset) bool {
 
 // Rule 5 - If the consumer offsets are advancing, but the lag is not decreasing somewhere, it's a warning (consumer is slow)
 func checkIfLagNotDecreasing(offsets []*protocol.ConsumerOffset) bool {
-	for i := 1; i < len(offsets); i++ {
-		if offsets[i].Lag < offsets[i-1].Lag {
-			return false
+	var lastLag *protocol.Lag
+	for i := 0; i < len(offsets); i++ {
+		lag := offsets[i].Lag
+		if lag != nil {
+			if lastLag != nil && lag.Value < lastLag.Value {
+				return false
+			}
+			lastLag = lag
 		}
 	}
 	return true
